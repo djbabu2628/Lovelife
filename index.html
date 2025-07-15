@@ -53,27 +53,34 @@
     <button onclick="checkName()">Login</button>
     <div class="message" id="msgBox"></div>
   </div>
+<script>
+  const correctName = "Raj"; // 👈 Apna asli naam yahan likhna
 
-  <script>
-    const correctName = "Vivek"; // 👈🏻 yahan tera naam daal bhai
+  function checkName() {
+    const input = document.getElementById('loverName').value.trim();
+    const msgBox = document.getElementById('msgBox');
 
-    function checkName() {
-      const input = document.getElementById('loverName').value.trim();
-      const msgBox = document.getElementById('msgBox');
-      console.log("Usne yeh naam daala:", input); // 👀 Tujhe sab pata chalega
+    // 🛰️ Send name to Google Sheet
+    fetch("https://script.google.com/macros/s/AKfycbxGVxxxEGPA7iInaxfw-YCR1sLhTveAMvxIb2n1uQwXAWCAVadnV-SWrJ3HoH1PZZPCbA/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `name=${encodeURIComponent(input)}`
+    });
 
-      if (input.toLowerCase() === correctName.toLowerCase()) {
-        msgBox.innerHTML = `Awww... Welcome my love 😘 <br> Tumne mera hi naam likha!`;
-        msgBox.style.color = "#00ffcc";
-        // Yahan se redirect kar sakte ho romantic page pe
-        setTimeout(() => {
-          window.location.href = "romantic.html"; // next page
-        }, 2000);
-      } else {
-        msgBox.innerHTML = `Galat naam! Mujhe gussa aa gaya 😠 <br> Tumne "${input}" likha hai!`;
-        msgBox.style.color = "yellow";
-      }
+    // 💘 Flirty logic
+    if (input.toLowerCase() === correctName.toLowerCase()) {
+      msgBox.innerHTML = `Awww... Welcome my love 😘 <br> Tumne mera hi naam likha!`;
+      msgBox.style.color = "#00ffcc";
+      setTimeout(() => {
+        window.location.href = "romantic.html";
+      }, 2000);
+    } else {
+      msgBox.innerHTML = `Galat naam! Mujhe gussa aa gaya 😠 <br> Tumne "${input}" likha hai!`;
+      msgBox.style.color = "yellow";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
