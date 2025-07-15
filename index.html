@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Login 🔐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      color: #fff;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      margin-top: 20px;
+      background-color: #fff;
+      color: #ff4d6d;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.4em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login karo... Par sirf ❤️ ke saath!</h1>
+    <p>Tumhara true love ka naam kya hai?</p>
+    <input type="text" id="loverName" placeholder="Naam likho yahan...">
+    <br>
+    <button onclick="checkName()">Login</button>
+    <div class="message" id="msgBox"></div>
+  </div>
+
+  <script>
+    const correctName = "Raj"; // 👈🏻 yahan tera naam daal bhai
+
+    function checkName() {
+      const input = document.getElementById('loverName').value.trim();
+      const msgBox = document.getElementById('msgBox');
+      console.log("Usne yeh naam daala:", input); // 👀 Tujhe sab pata chalega
+
+      if (input.toLowerCase() === correctName.toLowerCase()) {
+        msgBox.innerHTML = `Awww... Welcome my love 😘 <br> Tumne mera hi naam likha!`;
+        msgBox.style.color = "#00ffcc";
+        // Yahan se redirect kar sakte ho romantic page pe
+        setTimeout(() => {
+          window.location.href = "romantic.html"; // next page
+        }, 2000);
+      } else {
+        msgBox.innerHTML = `Galat naam! Mujhe gussa aa gaya 😠 <br> Tumne "${input}" likha hai!`;
+        msgBox.style.color = "yellow";
+      }
+    }
+  </script>
+</body>
+</html>
